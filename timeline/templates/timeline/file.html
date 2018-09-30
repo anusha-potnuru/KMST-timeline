@@ -5,19 +5,15 @@
 	var articles = [];
 	var id = 1;
 	{% for c in content %}
-		// var parser = new DOMParser();
-		// var dom = parser.parseFromString({{c}}, 'text/html');
-		// var decodedString = dom.body.textContent;
-		// console.log('{{c}}')
 		var newArticle = {};
 		var decodedString = '{{c}}'.split('&#39;').join('\"');
-		// console.log(decodedString);
 		var parsed_dict = JSON.parse(decodedString);
 		newArticle.id = id;
 		id++;
 		newArticle.title = parsed_dict['itemLabel']['value'];
 		var data = {};
 		var launchDate = parsed_dict['launchdate']['value'];
+		newArticle.subtitle = parsed_dict['launchdate']['value'].split("T")[0];
 		launchDate = launchDate.split("-");
 		data.year = parseInt(launchDate[0],10);
 		data.month = parseInt(launchDate[1],10);
@@ -27,7 +23,6 @@
 		if('image' in parsed_dict){
 			newArticle.imageUrl = (parsed_dict['image']['value']);
 		}
-		// console.log(newArticle);
 		articles.push(newArticle);
 	{% endfor %}
 
