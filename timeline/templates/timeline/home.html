@@ -1,0 +1,26 @@
+<html>
+<head> 
+	<title> blah blah </title>
+	{% load static %}
+	<script type="text/javascript" src = "{% static 'timeline/js/jquery-3.1.0.min.js' %}"></script>
+	<script type="text/javascript" src= "{% static 'timeline/js/jquery.mousewheel-3.1.13.min.js' %}"></script>	
+	<script type="text/javascript" src = "{% static 'timeline/js/histropedia-1.0.5.min.js' %}"></script>
+	
+
+	<style type="text/css">
+		#timelineJS{
+			height: 1000px;
+		}
+	</style>
+	<!-- <script type = "text/javascript" src = "{% static 'timeline/js/file.js' %}"> </script>  -->
+</head>
+<body>
+	<!-- <iframe width="940" height="567" src="http://histropedia.com/timeline/5bnj79bjyr/Artists?embedded=true" style=""></iframe> -->
+	<div id="frame">
+		<h2> Timeline </h2>
+		<div id="timelineJS"> </div>
+	</div>
+
+	{% block content %}
+	{% endblock %}
+</body>
