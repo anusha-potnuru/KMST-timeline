@@ -2,8 +2,18 @@ from django.shortcuts import render
 from SPARQLWrapper import SPARQLWrapper, JSON
 # Create your views here.
 def index(request):
+	query_str = get_query()
 	sparql = SPARQLWrapper('https://query.wikidata.org/sparql')
-	sparql.setQuery("""
+	sparql.setQuery(query_str)
+	sparql.setReturnFormat(JSON)
+	results = sparql.query().convert()
+	result = results['results']['bindings']
+	print(type(result))
+	return render(request, 'timeline/file.html',{'content':result})
+
+
+def get_query():
+	return ("""
 	SELECT ?item ?itemLabel ?launchdate (SAMPLE(?image) AS ?image)
 	WHERE
 	{
@@ -16,8 +26,3 @@ def index(request):
 	}
 	GROUP BY ?item ?itemLabel ?launchdate
 	""")
-	sparql.setReturnFormat(JSON)
-	results = sparql.query().convert()
-	result = results['results']['bindings']
-	print(type(result))
-	return render(request, 'timeline/file.html',{'content':result})
