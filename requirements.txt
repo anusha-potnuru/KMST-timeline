@@ -1,9 +1,5 @@
 Django==2.0.4
 Jinja2==2.8
-pyparsing==2.2.0
-python-dateutil==2.7.0
-python-debian==0.1.27
-python-systemd==231
 rdflib==4.2.2
 SPARQLWrapper==1.8.2
 whitenoise==4.1
