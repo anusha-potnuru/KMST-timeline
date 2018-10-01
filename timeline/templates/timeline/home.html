@@ -1,17 +1,28 @@
 <html>
 <head> 
+	<meta charset="utf-8" />
 	<title> KMST project </title>
 	{% load static %}
 	<script type="text/javascript" src = "{% static 'timeline/js/jquery-3.1.0.min.js' %}"></script>
 	<script type="text/javascript" src= "{% static 'timeline/js/jquery.mousewheel-3.1.13.min.js' %}"></script>	
 	<script type="text/javascript" src = "{% static 'timeline/js/histropedia-1.0.5.min.js' %}"></script>
 	<link rel="stylesheet" type = "text/css" href=" {% static 'timeline/css/styling.css' %}" />	
+
 </head>
 <body>
-	<div id="frame">
+	<div id="heading">
 		<h2> Timeline of space missions</h2>
-		<div id="timelineJS"> </div>
+	</div>
+	<div id="frame">
+		<div id="border">
+			<div id="timelineJS"> </div>
+		</div>
+		<!-- {% comment %} 
+		{% include 'timeline/includes/filter_div.html' %} 
+		{% endcomment %} -->
 	</div>
 	{% block content %}
 	{% endblock %}
+
+
 </body>
