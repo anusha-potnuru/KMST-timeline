@@ -1,0 +1,26 @@
+{% block content %}
+<div id="constraint_div">
+	<form>
+		<div>
+			<p> Add filter constraints </p>
+			predicate: &emsp;       			
+			<select name="predicate" id="predicate" >
+				{% for p in predicates %}
+					<option value = {{p}}> {{p}} </option>
+				{% endfor %}
+			</select>
+			<br>
+			object: &emsp;&emsp;&ensp;&nbsp;
+			<select name="object" id="object">
+				{% for o in objects %}
+					<option value={{o}}> {{o}} </option>
+				{% endfor %}
+			</select>
+			<br />
+		</div>
+		<div>
+			<input type="submit" value="Apply filters">
+		</div>
+	</form>
+</div>
+{% endblock %}
