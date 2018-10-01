@@ -4,6 +4,11 @@
 <script type="text/javascript">
 	var articles = [];
 	var id = 1;
+	
+	{% include 'timeline/includes/RandomColor.js' %}
+
+	{% include 'timeline/includes/TimelineStyles.js' %}
+	
 	{% for c in content %}
 		var newArticle = {};
 		var decodedString = '{{c}}'.split('&#39;').join('\"');
@@ -21,16 +26,16 @@
 		data.precision = Histropedia.PRECISION_DAY;
 		newArticle.from = data;
 		if('image' in parsed_dict){
-			newArticle.imageUrl = (parsed_dict['image']['value']);
+			newArticle.imageUrl = parsed_dict['image']['value'];
 		}
+		newArticle.style = articleStyle;
+		newArticle.activeStyle = articleActiveStyle;
 		articles.push(newArticle);
 	{% endfor %}
 
 	var div_container = document.getElementById("timelineJS");
-	var myTimeline = new Histropedia.Timeline(div_container,{});
-	console.log(articles);
+	var myTimeline = new Histropedia.Timeline(div_container,timelineStyle);
 	myTimeline.load(articles);
-	myTimeline.redraw();
 
 </script>
 {% endblock %}
