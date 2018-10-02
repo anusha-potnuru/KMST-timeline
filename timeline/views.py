@@ -3,7 +3,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 # Create your views here.
 
 def get_query():
-	query = """
+	query1 = """
 	SELECT ?item ?itemLabel ?launchdate (SAMPLE(?image) AS ?image)
 	WHERE
 	{
@@ -13,6 +13,34 @@ def get_query():
 	    OPTIONAL { ?item wdt:P18 ?image. }
 
 	    ?item wdt:P137 wd:Q23548.
+	}
+	GROUP BY ?item ?itemLabel ?launchdate
+	"""
+
+	query = """
+	SELECT DISTINCT ?item ?itemLabel ?launchdate (SAMPLE(?image) AS ?image)
+	WHERE
+	{
+		{
+          ?item wdt:P31 wd:Q26529 .
+         }
+        UNION
+        {
+          ?item wdt:P31 wd:Q1378139 
+        }
+        UNION
+        {
+          ?item wdt:P31 wd:Q2133344 
+        }
+        UNION
+        {
+          ?item wdt:P31 wd:Q40218
+        }     
+	    ?item wdt:P619 ?launchdate .
+		?item rdfs:label ?itemLabel. 
+	    OPTIONAL { ?item wdt:P18 ?image. }
+        FILTER(LANG(?itemLabel) ="en") .
+        FILTER(!CONTAINS(LCASE(?itemLabel), "\'"@en)). 
 	}
 	GROUP BY ?item ?itemLabel ?launchdate
 	"""
