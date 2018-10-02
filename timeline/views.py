@@ -4,25 +4,46 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 def get_query():
 	query = """
-	SELECT DISTINCT ?item ?itemLabel ?launchdate (SAMPLE(?image) AS ?image) WHERE {
+	SELECT DISTINCT ?item ?itemLabel ?launchdate (GROUP_CONCAT(distinct ?crewLabel; SEPARATOR=", ") AS ?crews)  (SAMPLE(?image) AS ?image) ?wikipedia ?launchsite WHERE {
 		{ ?item wdt:P31 wd:Q26529. }
 		UNION
 		{ ?item wdt:P31 wd:Q1378139. }
-	  	UNION
-	  	{ ?item wdt:P31 wd:Q2133344. }
-	  	UNION
-	  	{ ?item wdt:P31 wd:Q40218. }
-	  	UNION
+		UNION
+		{ ?item wdt:P31 wd:Q2133344. }
+		UNION
+		{ ?item wdt:P31 wd:Q40218. }
+		UNION
 		{ ?item wdt:P31 wd:Q752783. }
-  		UNION
-  		{   ?item wdt:P137 wd:Q23548. }
-  		?item wdt:P619 ?launchdate.
-  		?item rdfs:label ?itemLabel.
-  		OPTIONAL { ?item wdt:P18 ?image. }
-  		FILTER((LANG(?itemLabel)) = "en")
-  		FILTER(!CONTAINS(LCASE(?itemLabel), "'"@en))
+		UNION
+		{ ?item wdt:P137 wd:Q23548. }
+		UNION
+		{ ?item wdt:P1427 wd:Q845774. }
+		UNION
+		{ ?item wdt:P31 wd:Q5916. }
+		?item wdt:P619 ?launchdate.
+		?item rdfs:label ?itemLabel.
+		OPTIONAL { ?item wdt:P18 ?image. }
+		OPTIONAL{
+		?item wdt:P1029 ?crew .
+		?crew rdfs:label ?crewLabel.
+		FILTER((LANG(?crewLabel)) = "en")
+        FILTER(!CONTAINS(LCASE(?crewLabel), "'"@en))
+        }
+		OPTIONAL {
+		  ?wikipedia schema:about ?item .
+		  ?wikipedia schema:inLanguage "en" .
+		  FILTER (SUBSTR(str(?wikipedia), 1, 25) = "https://en.wikipedia.org/")
+		}
+        OPTIONAL{
+          ?item wdt:P1427 ?lsite .
+          ?lsite rdfs:label ?launchsite .
+          FILTER((LANG(?launchsite)) = "en")
+          FILTER(!CONTAINS(LCASE(?launchsite), "'"@en))
+        }
+		FILTER((LANG(?itemLabel)) = "en")
+		FILTER(!CONTAINS(LCASE(?itemLabel), "'"@en))
 	}
-	GROUP BY ?item ?itemLabel ?launchdate
+	GROUP BY ?item ?itemLabel ?launchdate  ?wikipedia ?launchsite
 	"""
 	return query
 
@@ -66,6 +87,7 @@ def get_predicates_and_objects():
 def index(request):
 	predicates,objects = get_predicates_and_objects()
 	result = exec_query()
+	print(result[0])
 	return render(request, 'timeline/file.html',{'content':result, 'predicates': predicates, 'objects':objects})
 
 
