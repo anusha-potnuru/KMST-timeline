@@ -32,10 +32,10 @@
 		newArticle.activeStyle = articleActiveStyle;
 		articles.push(newArticle);
 	{% endfor %}
-
 	var div_container = document.getElementById("timelineJS");
 	var myTimeline = new Histropedia.Timeline(div_container,timelineStyle);
 	myTimeline.load(articles);
+	document.getElementById("count").innerHTML = 'Timeline contains '+myTimeline.articles.length+' elements' ;
 
 </script>
 {% endblock %}
