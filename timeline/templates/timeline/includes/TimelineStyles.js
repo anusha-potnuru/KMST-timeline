@@ -160,8 +160,8 @@ var timelineStyle = {
 		document.getElementById('wikipedia').innerHTML = 'wikipedia/' + article.title;
 		document.getElementById('wikidata').href = article.data.wikidata;
 		document.getElementById('wikidata').innerHTML = 'wikidata/' + article.title;
-		console.log(article);
-		var height = document.getElementById('knowledge').clientHeight;
-		
+		var wikilink = article.data.wikipedia.split("/");
+		document.getElementById('dbpedia').href = 'https://dbpedia.org/page/' + wikilink[wikilink.length-1];
+		document.getElementById('dbpedia').innerHTML = 'dbpedia/' + article.title;
 	}
 }
