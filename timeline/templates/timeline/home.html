@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head> 
 	<meta charset="utf-8" />
@@ -10,17 +11,14 @@
 
 </head>
 <body>
-	<div id="heading">
-		<h2> Timeline of space missions</h2>
-		<p id="count"></p>
+	<div >
+		<h2 id="heading"> Timeline of space missions</h2>
 	</div>
 	<div id="frame">
 		<div id="border">
 			<div id="timelineJS"> </div>
-		</div>
-		<!-- {% comment %} 
-		{% include 'timeline/includes/filter_div.html' %} 
-		{% endcomment %} -->
+		</div> 
+		{% include 'timeline/includes/knowledge_card.html' %}
 	</div>
 	{% block content %}
 	{% endblock %}
