@@ -1,4 +1,5 @@
 var articleStyle = {
+	color: "#444",
 	width: 150,                             
 	topRadius: 3,                             
 	starMargin: 2,                           
