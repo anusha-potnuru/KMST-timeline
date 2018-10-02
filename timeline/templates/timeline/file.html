@@ -4,11 +4,10 @@
 <script type="text/javascript">
 	var articles = [];
 	var id = 1;
-	
-	{% include 'timeline/includes/RandomColor.js' %}
 
+	{% include 'timeline/includes/RandomColor.js' %}
 	{% include 'timeline/includes/TimelineStyles.js' %}
-	
+
 	{% for c in content %}
 		var newArticle = {};
 		var decodedString = '{{c}}'.split('&#39;').join('\"');
@@ -17,17 +16,27 @@
 		id++;
 		newArticle.title = parsed_dict['itemLabel']['value'];
 		var data = {};
-		var launchDate = parsed_dict['launchdate']['value'];
-		newArticle.subtitle = parsed_dict['launchdate']['value'].split("T")[0];
+		var launchDate = parsed_dict['launchdate']['value'].split("T")[0];
+		newArticle.subtitle = launchDate;
 		launchDate = launchDate.split("-");
 		data.year = parseInt(launchDate[0],10);
 		data.month = parseInt(launchDate[1],10);
-		data.day = parseInt(launchDate[2].split("T")[0],10);
+		data.day = parseInt(launchDate[2],10);
 		data.precision = Histropedia.PRECISION_DAY;
 		newArticle.from = data;
 		if('image' in parsed_dict){
 			newArticle.imageUrl = parsed_dict['image']['value'];
 		}
+		else newArticle.imageUrl = undefined;
+		newArticle.abstract = 'Yet to be done <br> P.S: KMST is too much work :( '
+		if('launchsite' in parsed_dict)
+			newArticle.launchsite = parsed_dict['launchsite']['value'];
+		else newArticle.launchsite = "No data available";
+		newArticle.crew = parsed_dict['crews']['value'];
+		if('wikipedia' in parsed_dict)
+			newArticle.wikipedia = parsed_dict['wikipedia']['value'];
+		else newArticle.wikipedia = 'https://en.wikipedia.org/wiki/' + newArticle.title.split(" ").join("_");
+		newArticle.wikidata = parsed_dict['item']['value'];
 		newArticle.style = articleStyle;
 		newArticle.activeStyle = articleActiveStyle;
 		articles.push(newArticle);
@@ -35,8 +44,6 @@
 	var div_container = document.getElementById("timelineJS");
 	var myTimeline = new Histropedia.Timeline(div_container,timelineStyle);
 	myTimeline.load(articles);
-	document.getElementById("count").innerHTML = 'Timeline contains '+myTimeline.articles.length+' elements' ;
-
 </script>
 {% endblock %}
 
