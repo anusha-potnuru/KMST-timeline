@@ -1,5 +1,5 @@
 function getRandomColorHeader() {
-		var letters = 'ABCDEF';
+		var letters = '123456';
 		var color = '#';
 		for (var i = 0; i < 6; i++) {
 		color += letters[Math.floor(Math.random() * 6)];
