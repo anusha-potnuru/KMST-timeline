@@ -110,7 +110,7 @@ var articleStyle = {
 			}
 		},
 		article: {
-			density: Histropedia.DENSITY_HIGH,
+			density: Histropedia.DENSITY_LOW,
 			distanceToMainLine: 320,
 			collectOngoing: false,
 			autoStacking: {
