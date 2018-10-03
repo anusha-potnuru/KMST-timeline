@@ -20,9 +20,9 @@
 		<h6 id="p01"><b>LAUNCH SITE</b></h6>
 		<div  class="custom-select" style="width:200px;">
 	  		<select>
-	    		<option value="0">Select</option>
+	    		<option value="0" class="dropdown">Select</option>
 	    		{% for lsite in launchsites %}
-		    		<option value="{{lsite}}"> {{lsite}} </option>
+		    		<option value="{{lsite}}" class="dropdown"> {{lsite}} </option>
 		    	{% endfor %}
 	  		</select>
 		</div>

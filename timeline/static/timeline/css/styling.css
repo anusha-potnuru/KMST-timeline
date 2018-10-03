@@ -83,15 +83,21 @@
    margin-left: auto;
    display: block;
    text-align: center;
-
 }
 
+.dropdown{
+	display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;  
+    flex-wrap: wrap;
+}
 #wrapper{
 	border: 3px solid black;
 	float: left;
 	margin-left: 5px;
 	margin-right: 5px;
 	overflow: auto;
+
 }
 
 
