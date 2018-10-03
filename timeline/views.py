@@ -88,6 +88,10 @@ def index(request):
 	predicates,objects = get_predicates_and_objects()
 	result = exec_query()
 	print(result[0])
-	return render(request, 'timeline/file.html',{'content':result, 'predicates': predicates, 'objects':objects})
+	launchsites = []
+	for r in result:
+		if('launchsite' in r):
+			launchsites.append(r['launchsite']['value'])
+	return render(request, 'timeline/file.html',{'content':result,'launchsites':launchsites})
 
 

@@ -2,19 +2,27 @@
 <html>
 <head> 
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> KMST project </title>
+	
 	{% load static %}
 	<script type="text/javascript" src = "{% static 'timeline/js/jquery-3.1.0.min.js' %}"></script>
 	<script type="text/javascript" src= "{% static 'timeline/js/jquery.mousewheel-3.1.13.min.js' %}"></script>	
 	<script type="text/javascript" src = "{% static 'timeline/js/histropedia-1.0.5.min.js' %}"></script>
 	<link rel="stylesheet" type = "text/css" href=" {% static 'timeline/css/styling.css' %}" />	
 
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+	<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<div >
 		<h2 id="heading"> Timeline of space missions</h2>
 	</div>
-	<div id="frame">
+	<div id="frame" >
+		{% include 'timeline/includes/filter_div.html' %}
 		<div id="border">
 			<div id="timelineJS"> </div>
 		</div> 

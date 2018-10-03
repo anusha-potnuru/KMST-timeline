@@ -1,26 +1,68 @@
-{% block content %}
-<div id="constraint_div">
+<script>
+ $(function() {
+    $( "#slider-3" ).slider({
+       range:true,
+       min: 0,
+       max: 500,
+       values: [ 35, 200 ],
+       slide: function( event, ui ) {
+          $( "#price" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+       }
+    });
+    $( "#price" ).val( $( "#slider-3" ).slider( "values", 0 ) +
+       " - " + $( "#slider-3" ).slider( "values", 1 ) );
+ });
+</script>
+
+<div id="wrapper">
 	<form>
-		<div>
-			<p> Add filter constraints </p>
-			predicate: &emsp;       			
-			<select name="predicate" id="predicate" >
-				{% for p in predicates %}
-					<option value = {{p}}> {{p}} </option>
-				{% endfor %}
-			</select>
-			<br>
-			object: &emsp;&emsp;&ensp;&nbsp;
-			<select name="object" id="object">
-				{% for o in objects %}
-					<option value={{o}}> {{o}} </option>
-				{% endfor %}
-			</select>
-			<br />
+
+		<h6 id="p01"><b>LAUNCH SITE</b></h6>
+		<div  class="custom-select" style="width:200px;">
+	  		<select>
+	    		<option value="0">Select</option>
+	    		{% for lsite in launchsites %}
+		    		<option value="{{lsite}}"> {{lsite}} </option>
+		    	{% endfor %}
+	  		</select>
 		</div>
-		<div>
-			<input type="submit" value="Apply filters">
+      	<br>
+
+      	<h6 id="p01"><b>TYPE OF MISSION</b></h6>
+      	<div  class="custom-select" style="width:200px;">
+	  		<select>
+	    		<option value="0">Select :</option>
+	    		<option value="1">Unmanned</option>
+	    		<option value="2">Manned</option>
+	  		</select>
 		</div>
+		<br>
+
+		<h6 id="p01"><b>COUNTRY</b></h6>
+      	<div class="custom-select" style="width:200px;">
+	  		<select>
+	    		<option value="0">Select :</option>
+	  		</select>
+		</div>
+		<br>
+
+		<h6 id="p01"><b>LAUNCH DATE</b></h6>	
+		<h5 style="display:inline-block;margin-right:10px;"><b>From:</b></h5>
+		<input style="margin-right:30px;" type="date" name="date">
+		<br />
+		<h5 style="display:inline-block;"><b>To: &emsp;&ensp;&nbsp;</b></h5>
+		<input type="date" name="date">
+		<br>
+
+  		<p>
+	        <label for = "price"><h6 id="p01"><b>MISSION TIME</b></h6>	</label>
+	        <input type = "text" id = "price" style = "border:0; color:#b9cd6d; font-weight:bold;">
+      	</p>
+      	<div style="width: 200px" id = "slider-3"></div>
+      	<br>
+		<br>
+		<input type="Submit" name="Submit">
+		<input type="Reset" name="Reset">
+
 	</form>
 </div>
-{% endblock %}

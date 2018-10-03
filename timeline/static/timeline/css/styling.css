@@ -26,11 +26,11 @@
 	padding: 3px;
 }
 #border{
-	width: 65%;
+	width: 50%;
 	float: left;
 	border: 3px solid black;
-	margin-right: 5%;
 	padding: 10px;
+	margin-right: 5px;
 }
 
 #name{
@@ -60,7 +60,39 @@
 	text-align: center;
 }
 
+#p01
+{
+	color: #fff;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	border-radius: 10px;
+	background: rgba(0,0,0,.6);
+    backdrop-filter: grayscale(1) contrast(3) blur(1px);
+    width:150px;
+    height:20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    line-height:20px;
+}
+.custom-select
+{
+   border-radius: 10px;
+   height: 24px;
+   width: 50px;
+   margin-right: auto;
+   margin-left: auto;
+   display: block;
+   text-align: center;
 
+}
+
+#wrapper{
+	border: 3px solid black;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	overflow: auto;
+}
 
 
 
