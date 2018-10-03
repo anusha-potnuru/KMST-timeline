@@ -92,6 +92,7 @@ def index(request):
 	for r in result:
 		if('launchsite' in r):
 			launchsites.append(r['launchsite']['value'])
+	launchsites = list(set(launchsites))
 	return render(request, 'timeline/file.html',{'content':result,'launchsites':launchsites})
 
 
