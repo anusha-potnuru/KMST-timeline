@@ -82,40 +82,45 @@ def index(request):
 			mission_duration_max = form.cleaned_data['mission_duration_max']
 			# print(launchsite_selected)
 			# print(mission_type)
-			# print(type(launchdate_from))
+			print(type(launchdate_from))
 			# print(launchdate_to)
 			# print(mission_duration_min)
 			# print(mission_duration_max)
 			print(launchsite_selected)
-			for r in result:
+			remove_list = [False]*len(result)
+			for i in range(len(result)):
 				if(launchsite_selected is not ''):
-					if('launchsite' not in r or r['launchsite']['value'] != launchsite_selected):
-						if('launchsite' in r):
-							print('removed '+ r['launchsite']['value'])
-						result.remove(r)
+					if('launchsite' not in result[i] or result[i]['launchsite']['value'] != launchsite_selected):
+						remove_list[i] = True
 						continue
 				if(mission_type != 0):
 					if(mission_type == 1):
-						if(r['crews']['value'] != ''):
-							result.remove(r)
+						if(result[i]['crews']['value'] != ''):
+							remove_list[i] = True
 							continue
 					else:
-						if(r['crews']['value'] == ''):
-							result.remove(r)
+						if(result[i]['crews']['value'] == ''):
+							remove_list[i] = True
 							continue
 				if(launchdate_from is not None):
-					launchdate_from_str = r['launchdate']['value'].split(sep='T')[0]
-					launchdate_from_parsed = datetime.strptime(launchdate_from_str,'%Y-%m-%d')
+					launchdate_from_str = result[i]['launchdate']['value'].split(sep='T')[0]
+					launchdate_from_parsed = datetime.strptime(launchdate_from_str,'%Y-%m-%d').date()
+					print(type(launchdate_from_parsed))
+					print(type(launchdate_from))
 					if(launchdate_from_parsed<launchdate_from):
-						result.remove(r)
+						remove_list[i] = True
 						continue
 				if(launchdate_to is not None):
 					launchdate_from_str = r['launchdate']['value'].split(sep='T')[0]
-					launchdate_from_parsed = datetime.strptime(launchdate_from_str,'%Y-%m-%d')
+					launchdate_from_parsed = datetime.strptime(launchdate_from_str,'%Y-%m-%d').date()
 					if(launchdate_from_parsed>launchdate_to):
-						result.remove(r)
+						remove_list[i] = True
 						continue
-
+			result_filtered = []
+			for i in range(len(result)):
+				if(not remove_list[i]):
+					result_filtered.append(result[i])
+			result = result_filtered
 	else:
 		form = filter_form(launchsite_list = launchsite_list)
 	return render(request, 'timeline/file.html',{'form':form,'content':result})
