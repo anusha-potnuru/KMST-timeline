@@ -44,6 +44,7 @@
 	var div_container = document.getElementById("timelineJS");
 	var myTimeline = new Histropedia.Timeline(div_container,timelineStyle);
 	myTimeline.load(articles);
+	document.getElementById('heading').innerHTML += articles.length;
 </script>
 {% endblock %}
 
