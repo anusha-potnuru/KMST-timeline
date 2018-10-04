@@ -63,10 +63,13 @@ def exec_query():
 def index(request):
 	launchsites = []
 	launchsite_list = [(None,'Select')]
+	url_list = []
 	result = exec_query()
 	for r in result:
 		if('launchsite' in r):
 			launchsites.append(r['launchsite']['value'])
+		if('wikipedia' in r):
+			url_list.append(r['wikipedia']['value'])
 	launchsites = list(set(launchsites))
 	for i in range(len(launchsites)):
 		launchsite_list.append((launchsites[i],launchsites[i]))
@@ -80,12 +83,7 @@ def index(request):
 			launchdate_to = form.cleaned_data['launchdate_to']
 			mission_duration_min = form.cleaned_data['mission_duration_min']
 			mission_duration_max = form.cleaned_data['mission_duration_max']
-			# print(launchsite_selected)
-			# print(mission_type)
 			print(type(launchdate_from))
-			# print(launchdate_to)
-			# print(mission_duration_min)
-			# print(mission_duration_max)
 			print(launchsite_selected)
 			remove_list = [False]*len(result)
 			for i in range(len(result)):
