@@ -147,21 +147,46 @@ var timelineStyle = {
 	onArticleDoubleClick: function(article){
 		document.getElementById('knowledge').style.display = "block";
 		document.getElementById('blankcard').style.display = "none";
+		document.getElementById('name').innerHTML = '';
 		document.getElementById('name').innerHTML = article.title;
-		document.getElementById('image').src = article.image.currentSrc;
+		document.getElementById('image').src = '';
+		if(article.image != null && article.image.currentSrc != undefined)
+			document.getElementById('image').src = article.image.currentSrc;
+		document.getElementById('launchdate').innerHTML = '<strong> Launch Date </strong> <em> No info available </em>'; 
+
 		document.getElementById('launchdate').innerHTML = '<strong> Launch Date </strong> ' + article.subtitle;
+		document.getElementById('abstract').innerHTML = '';
 		document.getElementById('abstract').innerHTML = article.data.abstract;
+		document.getElementById('site').innerHTML = '<strong> Launch Site: </strong> <em> No info available </em>';
 		document.getElementById('site').innerHTML = '<strong> Launch Site: </strong> '+article.data.launchsite;
+		document.getElementById('crew').innerHTML = '<em> No info available </em>';
 		if(article.data.crew == "")
 			document.getElementById('crew').innerHTML = '<em>--Unmanned mission--</em>';
 		else
 			document.getElementById('crew').innerHTML = article.data.crew;
-		document.getElementById('wikipedia').href = article.data.wikipedia;
-		document.getElementById('wikipedia').innerHTML = 'wikipedia/' + article.title;
-		document.getElementById('wikidata').href = article.data.wikidata;
-		document.getElementById('wikidata').innerHTML = 'wikidata/' + article.title;
+		document.getElementById('wikipedia').style.display = "none";
+		document.getElementById('wikipedia').innerHTML = '<em> No info available </em>';
+		if(article.data.wikipedia != undefined){
+			document.getElementById('wikipedia').href = article.data.wikipedia;
+			document.getElementById('wikipedia').style.display = "block";
+			document.getElementById('wikipedia').innerHTML = 'wikipedia/' + article.title;
+		}
+		document.getElementById('wikidata').style.display = "none";
+		document.getElementById('wikidata').innerHTML = '<em> No info available </em>';
+		if(article.data.wikidata != undefined){
+			document.getElementById('wikidata').href = article.data.wikidata;
+			document.getElementById('wikidata').innerHTML = 'wikidata/' + article.title;
+			document.getElementById('wikidata').style.display = "block";
+		}
+		document.getElementById('dbpedia').style.display = "none";
+		document.getElementById('dbpedia').innerHTML = '<em> No info available </em>';
 		var wikilink = article.data.wikipedia.split("/");
-		document.getElementById('dbpedia').href = 'https://dbpedia.org/page/' + wikilink[wikilink.length-1];
-		document.getElementById('dbpedia').innerHTML = 'dbpedia/' + article.title;
+		if(wikilink[0] != undefined){
+			document.getElementById('dbpedia').href = 'https://dbpedia.org/page/' + wikilink[wikilink.length-1];
+			document.getElementById('dbpedia').innerHTML = 'dbpedia/' + article.title;
+			document.getElementById('dbpedia').style.display = "block";
+		}
+
+		console.log(article);
 	}
 }
