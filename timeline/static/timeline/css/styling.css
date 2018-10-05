@@ -16,7 +16,31 @@
 	overflow: auto;
 	border: 3px solid black;
 	padding: 3px;
+	font-family: Verdana, Geneva, sans-serif;
+	border: 1px solid #696969;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+#crewDiv
+{
+	background-color: #ffff99;
+   
+}
+#siteDiv
+{
+	background-color: #ffffcc;
+ 
+}
+#linksDiv
+{
+	background-color: #ffffcc;
+
+}
+#launchdateDiv{
+	background-color: #ffffcc;
+   
+}
+
 #constraint_div{
 	width: 100%;
 	overflow: scroll;
@@ -34,6 +58,7 @@
 }
 
 #name{
+	line-height:65px;
 	text-align: center;
 }
 
@@ -60,7 +85,10 @@
 	display: block;
 	text-align: center;
 }
-
+#nameDiv{
+	background-color: #ffff99;
+    
+}
 #p01
 {
 	color: #fff;
@@ -106,3 +134,21 @@
 }
 
 
+hr{ 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+  style=color:#ffff00;
+}
+p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+h3 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+
+}

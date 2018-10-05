@@ -8,7 +8,7 @@ var articleStyle = {
 		height: 50,                            
 		text: {                                   
 			font: "normal 14px 'Segoe UI'",       
-			color: "#fff",                      
+			color: "#000",                      
 			margin: 10,                          
 			lineHeight: 18,                      
 			numberOfLines: 2                      
@@ -16,7 +16,7 @@ var articleStyle = {
 	},
 	subheader: {                              
 		height: 35,                            
-		color: "#ccc",
+		color: "#aaa",
 		text: {                                   
 			font: "normal 11px 'Segoe UI'",      
 			color: "#000",                        

@@ -80,8 +80,6 @@ def index(request):
 			launchdate_to = form.cleaned_data['launchdate_to']
 			# mission_duration_min = form.cleaned_data['mission_duration_min']
 			# mission_duration_max = form.cleaned_data['mission_duration_max']
-			print(type(launchdate_from))
-			print(launchsite_selected)
 			remove_list = [False]*len(result)
 			for i in range(len(result)):
 				if(launchsite_selected is not ''):
@@ -100,14 +98,12 @@ def index(request):
 				if(launchdate_from is not None):
 					launchdate_from_str = result[i]['launchdate']['value'].split(sep='T')[0]
 					launchdate_from_parsed = datetime.strptime(launchdate_from_str,'%Y-%m-%d').date()
-					print(type(launchdate_from_parsed))
-					print(type(launchdate_from))
 					if(launchdate_from_parsed<launchdate_from):
 						remove_list[i] = True
 						continue
 				if(launchdate_to is not None):
-					launchdate_from_str = r['launchdate']['value'].split(sep='T')[0]
-					launchdate_from_parsed = datetime.strptime(launchdate_from_str,'%Y-%m-%d').date()
+					launchdate_to_str = result[i]['launchdate']['value'].split(sep='T')[0]
+					launchdate_to_parsed = datetime.strptime(launchdate_from_str,'%Y-%m-%d').date()
 					if(launchdate_from_parsed>launchdate_to):
 						remove_list[i] = True
 						continue

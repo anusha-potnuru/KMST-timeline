@@ -36,6 +36,7 @@
 			newArticle.wikipedia = parsed_dict['wikipedia']['value'];
 		else newArticle.wikipedia = 'https://en.wikipedia.org/wiki/' + newArticle.title.split(" ").join("_");
 		newArticle.wikidata = parsed_dict['item']['value'];
+		// articleStyle.color = getRandomColorHeader();
 		newArticle.style = articleStyle;
 		newArticle.activeStyle = articleActiveStyle;
 		articles.push(newArticle);
@@ -43,6 +44,10 @@
 	var div_container = document.getElementById("timelineJS");
 	var myTimeline = new Histropedia.Timeline(div_container,timelineStyle);
 	myTimeline.load(articles);
+	for(var i=1;i<articles.length+1;i++){
+		myTimeline.getArticleById(i).setStyle("color",getRandomColorHeader());
+		myTimeline.getArticleById(i).setStyle("subheader.color",getRandomColorSubHeader());
+	}
 	document.getElementById('count').innerHTML = 'Displaying ' + articles.length + ' articles';
 </script>
 {% endblock %}
