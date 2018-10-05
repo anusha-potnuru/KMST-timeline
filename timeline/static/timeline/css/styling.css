@@ -52,9 +52,11 @@
 #border{
 	width: 50%;
 	float: left;
-	border: 3px solid black;
+	border: 1px solid #696969;
 	padding: 10px;
 	margin-right: 5px;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
 }
 
 #name{
