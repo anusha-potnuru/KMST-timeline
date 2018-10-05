@@ -15,30 +15,30 @@ class filter_form(forms.Form):
 	launchsite = forms.CharField(label="Launch Site", required = False,widget = forms.Select(choices = [('Select','Select')]))
 	mission_types = [(0,'Select'),(1,'Unmanned'),(2,'Manned')]
 	typeofmission = forms.IntegerField(label = 'Type of Mission',widget =forms.Select(choices=[(0,'Select'),(1,'Unmanned'),(2,'Manned')]), required = False)
-	launchdate_from = forms.DateField(label = 'From ',widget = widgets.AdminDateWidget(), required = False)
-	launchdate_to = forms.DateField(label = 'To ',widget = widgets.AdminDateWidget(), required = False)
-	mission_duration_min = forms.IntegerField(label = 'Minimum: ', required = False)
-	mission_duration_max = forms.IntegerField(label = 'Maximum: ', required = False)
+	launchdate_from = forms.DateField(label = 'From ',widget = widgets.AdminDateWidget(), required = False,help_text = '<br>Enter date in yyyy-mm-dd format')
+	launchdate_to = forms.DateField(label = 'To ',widget = widgets.AdminDateWidget(), required = False,help_text = '<br>Enter date in yyyy-mm-dd format')
+	# mission_duration_min = forms.IntegerField(label = 'Minimum: ', required = False)
+	# mission_duration_max = forms.IntegerField(label = 'Maximum: ', required = False)
 
-	def clean_mission_duration_min(self):
-		data = self.cleaned_data['mission_duration_min']
-		if data is not None and data < 0:
-			raise ValidationError(_('Invalid entry - negative months'))
+	def clean_launchdate_from(self):
+		data = self.cleaned_data['launchdate_from']
+		# if data is not None and data < 0:
+			# raise ValidationError(_('Invalid entry - negative months'))
 		return data
 
-	def clean_mission_duration_max(self):
-		data = self.cleaned_data['mission_duration_max']
-		if data is not None and data<0:
-			raise ValidationError(_('Invalid entry - negative months'))
+	def clean_launchdate_to(self):
+		data = self.cleaned_data['launchdate_to']
+		# if data is not None and data<0:
+			# raise ValidationError(_('Invalid entry - negative months'))
 		return data
 
 	def clean(self):
 		super().clean()
-		duration_min = self.cleaned_data.get('mission_duration_min')
-		duration_max = self.cleaned_data.get('mission_duration_max')
-		if duration_min is not None and duration_min < 0:
-			raise ValidationError(_('Invalid entry - negative months'))
-		if duration_max is not None and duration_max < 0:
-			raise ValidationError(_('Invalid entry - negative months'))
-		if duration_min is not None and duration_max is not None and duration_min > duration_max:
-			raise ValidationError(_('Invalid entry - negative duration'))
+		# duration_min = self.cleaned_data.get('mission_duration_min')
+		# duration_max = self.cleaned_data.get('mission_duration_max')
+		# if duration_min is not None and duration_min < 0:
+		# 	raise ValidationError(_('Invalid entry - negative months'))
+		# if duration_max is not None and duration_max < 0:
+		# 	raise ValidationError(_('Invalid entry - negative months'))
+		# if duration_min is not None and duration_max is not None and duration_min > duration_max:
+		# 	raise ValidationError(_('Invalid entry - negative duration'))

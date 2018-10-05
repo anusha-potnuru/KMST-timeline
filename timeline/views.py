@@ -78,8 +78,8 @@ def index(request):
 			mission_type = form.cleaned_data['typeofmission']
 			launchdate_from = form.cleaned_data['launchdate_from']
 			launchdate_to = form.cleaned_data['launchdate_to']
-			mission_duration_min = form.cleaned_data['mission_duration_min']
-			mission_duration_max = form.cleaned_data['mission_duration_max']
+			# mission_duration_min = form.cleaned_data['mission_duration_min']
+			# mission_duration_max = form.cleaned_data['mission_duration_max']
 			print(type(launchdate_from))
 			print(launchsite_selected)
 			remove_list = [False]*len(result)
