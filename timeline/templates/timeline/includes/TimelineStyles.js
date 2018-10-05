@@ -155,8 +155,8 @@ var timelineStyle = {
 		document.getElementById('launchdate').innerHTML = '<strong> Launch Date </strong> <em> No info available </em>'; 
 
 		document.getElementById('launchdate').innerHTML = '<strong> Launch Date </strong> ' + article.subtitle;
-		document.getElementById('abstract').innerHTML = '';
-		document.getElementById('abstract').innerHTML = article.data.abstract;
+		// document.getElementById('abstract').innerHTML = '';
+		// document.getElementById('abstract').innerHTML = article.data.abstract;
 		document.getElementById('site').innerHTML = '<strong> Launch Site: </strong> <em> No info available </em>';
 		document.getElementById('site').innerHTML = '<strong> Launch Site: </strong> '+article.data.launchsite;
 		document.getElementById('crew').innerHTML = '<em> No info available </em>';

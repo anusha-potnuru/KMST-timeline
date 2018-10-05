@@ -63,13 +63,10 @@ def exec_query():
 def index(request):
 	launchsites = []
 	launchsite_list = [(None,'Select')]
-	url_list = []
 	result = exec_query()
 	for r in result:
 		if('launchsite' in r):
 			launchsites.append(r['launchsite']['value'])
-		if('wikipedia' in r):
-			url_list.append(r['wikipedia']['value'])
 	launchsites = list(set(launchsites))
 	for i in range(len(launchsites)):
 		launchsite_list.append((launchsites[i],launchsites[i]))
