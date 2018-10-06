@@ -1,8 +1,9 @@
 .home_title{
-	background-color: #fff;
+	background-color: inherit;
 	padding: 3px;
 	text-align: center;
 	font-family: Verdana, Geneva, sans-serif;
+	color: #eee;
 }
 
 
@@ -16,11 +17,21 @@
 .knowledge{
 	width: 25%;
 	overflow: auto;
-	border: 3px solid black;
-	padding: 3px;
+	/*padding-left: 5px;*/
+	/*padding-right: 5px;*/
+	/*padding-bottom: 20px;*/
 	font-family: Verdana, Geneva, sans-serif;
 	border: 1px solid #696969;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	/*background-color: #ffffcc;*/
+}
+
+#submit_button{
+	margin-left: 25%;
+	margin-right: 25%;
+}
+#blankcard{
+	background-color: #ffffcc;
 }
 
 #crewDiv
@@ -36,13 +47,39 @@
 #linksDiv
 {
 	background-color: #ffffcc;
-
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	padding-top: 3px;
 }
 #launchdateDiv{
-	background-color: #ffffcc;
+	background-color: #ffff99;
    
 }
 
+#launchdate{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+#site{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#crew_header{
+	text-align: center;
+}
+
+#crew{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
 #constraint_div{
 	width: 100%;
 	overflow: scroll;
@@ -58,6 +95,7 @@
 	padding: 10px;
 	margin-right: 5px;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	background-color: #fff;
 
 }
 
@@ -93,6 +131,10 @@
 	background-color: #ffff99;
     
 }
+#imageDiv{
+	background-color: #ffffcc;
+	
+}
 #p01
 {
 	color: #fff;
@@ -124,7 +166,7 @@
     display: flex;  
     flex-wrap: wrap;
 }
-#wrapper{
+#form_wrapper{
 	float: left;
 	margin-left: 5px;
 	margin-right: 5px;
@@ -132,11 +174,18 @@
 	width: 20%;
 	padding-left: 5px;
 	padding-bottom: 30px;
-	padding-top: 30px;
 	padding-right: 5px;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 	border: 1px solid #696969;
+	background-color: #ffffcc;
+	padding-top: 15px;
+	
+}
 
+.box_header{
+	text-align: center;
+	width: 100%;
+	padding-bottom: 15px;
 }
 
 #id_launchsite{
@@ -161,4 +210,19 @@ h3 {
     margin-block-start: 0em;
     margin-block-end: 0em;
 
+}
+
+body{
+	background-color: #84eeff;
+	background-image: url("/static/timeline/background.jpg");
+	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	colo
+}
+
+#blank_message{
+	margin-bottom: 10px;
+	margin-left: 5px;
 }

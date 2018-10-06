@@ -10,10 +10,10 @@
 	<script type="text/javascript" src = "{% static 'timeline/js/jquery-3.1.0.min.js' %}"></script>
 	<script type="text/javascript" src= "{% static 'timeline/js/jquery.mousewheel-3.1.13.min.js' %}"></script>	
 	<script type="text/javascript" src = "{% static 'timeline/js/histropedia-1.0.5.min.js' %}"></script>
-	<link rel="stylesheet" type = "text/css" href=" {% static 'timeline/css/styling.css' %}" />	
 	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}"/>
+	<link rel="stylesheet" type = "text/css" href=" {% static 'timeline/css/styling.css' %}" />	
 
 	<script type="text/javascript" src="/admin/jsi18n/"></script>
 	<script type="text/javascript" src="/static/admin/js/core.js"></script>
@@ -31,11 +31,12 @@
 		<!-- {% comment %}
 		{% include 'timeline/includes/filter_div.html' %}
 		{% endcomment %} -->
-		<div id="wrapper">
+		<div id="form_wrapper">
+			<h2 id="form_header" class="box_header"> Filter results </h3>
 			<form method="POST">
 				{% csrf_token %}
 				{{ form.as_p }}
-				<input type="submit" name="Submit">
+				<input type="submit" name="Submit" id="submit_button">
 			</form>
 		</div>
 		<div id="border">

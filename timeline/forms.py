@@ -15,8 +15,8 @@ class filter_form(forms.Form):
 	launchsite = forms.CharField(label="Launch Site", required = False,widget = forms.Select(choices = [('Select','Select')]))
 	mission_types = [(0,'Select'),(1,'Unmanned'),(2,'Manned')]
 	typeofmission = forms.IntegerField(label = 'Type of Mission',widget =forms.Select(choices=[(0,'Select'),(1,'Unmanned'),(2,'Manned')]), required = False)
-	launchdate_from = forms.DateField(label = 'From ',widget = widgets.AdminDateWidget(), required = False,help_text = '<br>Enter date in yyyy-mm-dd format')
-	launchdate_to = forms.DateField(label = 'To ',widget = widgets.AdminDateWidget(), required = False,help_text = '<br>Enter date in yyyy-mm-dd format')
+	launchdate_from = forms.DateField(label = 'From ',widget = widgets.AdminDateWidget(), required = False,help_text = '<br><em>Enter date in yyyy-mm-dd format</em>')
+	launchdate_to = forms.DateField(label = 'To ',widget = widgets.AdminDateWidget(), required = False,help_text = '<br><em>Enter date in yyyy-mm-dd format</em>')
 	# mission_duration_min = forms.IntegerField(label = 'Minimum: ', required = False)
 	# mission_duration_max = forms.IntegerField(label = 'Maximum: ', required = False)
 
