@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from django.conf.urls import url
+from . import i18_js
 urlpatterns = [
+    url(r'^admin/jsi18n',i18_js.js,name='js'),
     path('admin/', admin.site.urls),
     path(r'timeline/',include('timeline.urls')),
     path(r'',include('timeline.urls')),
