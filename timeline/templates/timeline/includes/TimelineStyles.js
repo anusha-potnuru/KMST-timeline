@@ -145,7 +145,6 @@ var timelineStyle = {
 		}
 	},
 	onArticleDoubleClick: function(article){
-		document.getElementById('knowledge').style.display = "block";
 		document.getElementById('blankcard').style.display = "none";
 		document.getElementById('name').innerHTML = '';
 		document.getElementById('name').innerHTML = article.title;
@@ -186,7 +185,6 @@ var timelineStyle = {
 			document.getElementById('dbpedia').innerHTML = 'dbpedia/' + article.title;
 			document.getElementById('dbpedia').style.display = "block";
 		}
-
 		// console.log(article);
 	}
 }
