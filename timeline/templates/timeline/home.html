@@ -23,29 +23,66 @@
 
 </head>
 <body>
-	<div id="title_wrapper">
-		<h1 id="heading" class="home_title"> <strong>Timeline of space missions</strong></h1>
-		<p id = "count" class="home_title"> </p> 
+	<div id= "top_bar">
+		<div id="filter_button_wrapper">
+			<span id = "filter_button" class="nav_button" onclick="openFilter()">&#9776; Filter Menu</span>
+		</div>
+		<div id="title_wrapper">
+			<h1 id="heading" class="home_title"> <strong>Timeline of space missions</strong></h1>
+			<p id = "count" class="home_title"> </p> 
+		</div>
+		<div id = "kc_button_wrapper">
+			<span id="kc_button" class="nav_button" onclick="openKC()">&#9776; Knowledge Card</span>
+		</div>
 	</div>
 	<div id="frame" >
 		<!-- {% comment %}
 		{% include 'timeline/includes/filter_div.html' %}
 		{% endcomment %} -->
 		<div id="form_wrapper">
-			<h2 id="form_header" class="box_header"> Filter results </h3>
+		<!-- <a href="javascript:void(0)" class="closebtn" onclick="closeFilter()">&times;</a>	 -->
+			<h2 id="form_header" class="box_header"> Filter results </h2>
 			<form method="POST">
 				{% csrf_token %}
 				{{ form.as_p }}
 				<input type="submit" name="Submit" id="submit_button">
 			</form>
 		</div>
+		{% include 'timeline/includes/knowledge_card.html' %}
 		<div id="border">
 			<div id="timelineJS"> </div>
 		</div> 
-		{% include 'timeline/includes/knowledge_card.html' %}
 	</div>
 	{% block content %}
 	{% endblock %}
 
+	<script type="text/javascript">
+		function openFilter(){
+			if(document.getElementById('form_wrapper').style.display=='none'){
+				document.getElementById("form_wrapper").style.width = "20%";
+				document.getElementById("border").style.marginLeft = "22%";
+				document.getElementById("form_wrapper").style.display = "initial";
+				myTimeline.setOption('width',document.getElementById('timelineJS').offsetWidth - 3);
+			}
+			else{
+				document.getElementById("border").style.marginLeft = "5px";
+				document.getElementById("form_wrapper").style.display = "none";
+				myTimeline.setOption('width',document.getElementById('timelineJS').offsetWidth - 3);	
+			}
 
+		}
+		function openKC(){
+			if(document.getElementById("knowledge").style.display=="none"){
+				document.getElementById("knowledge").style.width = "25%";
+				document.getElementById("border").style.marginRight = "26%";
+				document.getElementById("knowledge").style.display = "initial";
+				myTimeline.setOption('width',document.getElementById('timelineJS').offsetWidth - 3);
+			}
+			else{
+				document.getElementById("border").style.marginRight = "5px";
+				document.getElementById("knowledge").style.display = "none";
+				myTimeline.setOption('width',document.getElementById('timelineJS').offsetWidth - 3);	
+			}
+		}
+	</script>
 </body>

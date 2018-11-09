@@ -187,6 +187,6 @@ var timelineStyle = {
 			document.getElementById('dbpedia').style.display = "block";
 		}
 
-		console.log(article);
+		// console.log(article);
 	}
 }
