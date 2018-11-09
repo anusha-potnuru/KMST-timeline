@@ -14,8 +14,8 @@
 #filter_button_wrapper{
 	float: left;
 	width: 15%;
+	margin-left: 5%;
 	font-family: Verdana, Geneva, sans-serif;
-	display: table;
 }
 .nav_button{
 	font-size:20px;
@@ -35,7 +35,7 @@
 	float: right;
 	width: 20%;
 	font-family: Verdana, Geneva, sans-serif;
-	display: table;
+	/*display: table;*/
 }
 
 #frame{
@@ -117,8 +117,6 @@
 	padding: 3px;
 }
 #border{
-	/*width: 50%;*/
-	/*float: left;*/
 	/*transition: margin-left .5s;*/
 	/*transition: margin-right .5s;*/
 	border: 1px solid #696969;
