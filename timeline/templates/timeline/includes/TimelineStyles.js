@@ -74,7 +74,7 @@ var articleActiveStyle = {
 
 var timelineStyle = {
 	width: document.getElementById('timelineJS').offsetWidth - 3,
-	height: 400,
+	height: 475,
 	verticalOffset:  30,
 	draggingVicinity:{up:470, down:30},
 	initialDate:{
